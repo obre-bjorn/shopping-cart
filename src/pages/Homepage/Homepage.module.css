@@ -1,0 +1,9 @@
+.title{
+    color: rgb(69, 65, 65);
+    font-size: 4rem;
+}
+.container{
+    max-width: 1120px;
+    width: 100%;
+    margin: 0 auto;
+}

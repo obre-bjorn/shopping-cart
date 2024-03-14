@@ -1,0 +1,126 @@
+
+@import url('https://fonts.googleapis.com/css?family=Muli');
+
+/*reset*/
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/*product info */
+
+h1 {
+  color: #ff6d39;
+  font-family: "muli";
+  font-weight: bold;
+  font-size: 22px;
+  margin-top: 21px;
+  display: inline-block;
+}
+
+
+
+h3 {
+  color: #ffffff;
+  font-family: "muli";
+  margin-top: 10px;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+h2 {
+  color: #ffffff;
+  font-family: "muli";
+  /* margin-top: 10px; */
+  font-weight: 800;
+  font-size: 29px;
+}
+
+h4 {
+  display: inline-block;
+  color: #ffffff;
+  font-family: "muli";
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+h4.dis {
+  display: inline-block;
+  color: #ffffff;
+  font-family: "muli";
+  font-weight: 400;
+  font-size: 17px;
+  margin-left: 30px;
+  text-decoration: line-through #ea3201;
+}
+
+h4.dis span {
+  text-decoration: line-through #ea3201;
+}
+
+
+/*main card*/
+
+/* .card {
+  display: flex;
+  align-items: center;
+  background: #252831 url(https://www.dropbox.com/s/fuadz3vmw2nsylm/bg.png?raw=1)
+    no-repeat;
+  height: 600px;
+  width: 800px;
+  margin: 0 auto;
+  box-shadow: 0px 15px 50px 10px rgba(0, 0, 0, 0.4);
+  margin-top: 2%;
+} */
+.card{
+    /* box-shadow: 0px 15px 50px 10px rgba(0, 0, 0, 0.4); */
+    position: relative;
+    width: 400px;
+    /* height: 300px; */
+    margin-top: 1.2rem;
+    border-radius: 10px;
+    display: flex;
+    flex-grow: 0;
+    
+}
+
+.left {
+  height: 100%;
+  width: 40%;
+  /* display: flex; */
+  align-items: center;
+  background-color: #ff6d39;
+  /* margin-left: 93px; */
+  border-radius: 0% 50% 50% 0%;
+  /* position: absolute; */
+  z-index: 11;
+}
+
+.left img {
+    height: 100%;
+    width: 100%;
+  /* margin-left: -88px; */
+  /* margin-top: 60px; */
+}
+
+.right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.5rem;
+    content: "";
+    height: 100%;
+    /* width: 550px; */
+    width: 60%;
+    background-color: #2a2f40;
+    z-index: 3;
+    /* margin-left: 200px; */
+}
+
+.product-info {
+  /* margin-left: 110px; */
+  height: 394px;
+  width: 100%;
+  z-index: 10;
+}

@@ -1,0 +1,8 @@
+.button{
+    width: 8rem;
+    height: 2.5rem;
+    background-color: orangered;
+    color: navy;
+    border: none;
+    border-radius: 3rem;
+}
