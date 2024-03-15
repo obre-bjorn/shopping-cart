@@ -8,19 +8,18 @@ import Cart from "../../components/Cart";
 
 import styles from "./Root.module.css";
 
-export default function Root() {
+export default function Root({cart}) {
 
-  const [cart, setCart] = useState([])
  return (
     <>
         <nav>
             <Link to='/'>Home</Link>
             <Link to='/shop'>Shop</Link>
-            <Cart total={cart.length}/>
+            <Cart cart={cart} />
         </nav>
 
         <main >
-          <Outlet {setCart}/>
+          <Outlet />
         </main>
     </>
   )

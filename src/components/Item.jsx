@@ -5,6 +5,8 @@ import styles from "./Item.module.css"
 
 
 const Item = ({id,name,price,image,description,category, handleAddCart}) => {
+
+
     return (
         <div className={styles.card}> 
             <div className={styles.left}>

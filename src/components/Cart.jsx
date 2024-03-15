@@ -1,13 +1,25 @@
 
+import { useState } from 'react';
+import cartStyles from './Cart.module.css'
 
-const Cart = ({total}) => {
-    
 
+const Cart = ({cart}) => {
 
+    const [showCart, setShowCart] = useState(false)
+
+    let totalcartItems = cart.length 
     return (
         <>
 
-            <h3>Cart({total})</h3>
+            <h3 className={cartStyles['cart-detail']}>Cart({totalcartItems})</h3>
+
+            {showCart && <div className="cart">
+
+
+
+            </div>
+            }
+            
         </>
     
     );
