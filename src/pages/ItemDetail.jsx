@@ -1,7 +1,6 @@
-import { useOutletContext, useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
-
+import { useParams } from 'react-router-dom';
 
 const ItemDetail = () => {
     
@@ -28,11 +27,7 @@ const ItemDetail = () => {
                 }finally{
                     setLoading(false)
                 }
-                    
-                
-        
-                    
-                    
+                       
                 
             } 
             
@@ -45,15 +40,6 @@ const ItemDetail = () => {
 
     },[itemid])
 
-    // const selectedItem = items.find(item => item.id === parseInt(itemid))
-    
-    // if(!selectedItem){
-
-    //     return (
-
-    //         <h1>Item not available</h1>
-    //     )
-    // }
 
     return (
         <div>
