@@ -75,8 +75,8 @@ const Shop = ( {setCart}) => {
             <div className={styles.container}>
 
                 {loading && <h1>Loading items...</h1>}
-                {items && items.map(item => <Item key={item.id} item={item} handleAddCart={handleAddCart}/>)}
-                <Outlet context={[items]}/>
+                {items && items.map(item => <Item key={item.id} item={item}  handleAddCart= {handleAddCart}  />)}
+                
             </div>
 
         </div>

@@ -5,18 +5,24 @@ import Button from './Button';
 import styles from "./Item.module.css"
 
 
-    const Item = ({item}) => {
+    const Item = ({item,handleAddCart}) => {
 
-    const {id,name,price,image,description,category, handleAddCart} = item
-
+    const {id,name,price,image,description,category} = item
+        
+    function handleClick(e){
+        console.log('clicked')
+            e.stopPropagation()
+            handleAddCart(id)
+        }
 
   
     return (
-        <Link to={`item/${id}`}>
-            <div className={styles.card}> 
+        <div className={styles.card}> 
+            <Link to={`item/${id}`}>
                 <div className={styles.left}>
                     <img src={image} alt="shoe"/>
                 </div>
+            </Link>
                 <div className={styles.right}>
                     <div className={styles['product-info']}> {/* Use brackets for dynamic class name */}
                         <div className={styles['product-name']}> {/* Use brackets for dynamic class name */}
@@ -27,11 +33,11 @@ import styles from "./Item.module.css"
                             <h2>{category}</h2>
                             <h4><span className="fa fa-dollar"></span>Ksh.{price}</h4>
                         </div>
-                        <Button label="Add to Cart" handleClick={handleAddCart}/>
+                        <Button label="Add to Cart" handleClick={handleClick}/>
                     </div>
                 </div>
+                
             </div>
-        </Link>
     );
 }
 

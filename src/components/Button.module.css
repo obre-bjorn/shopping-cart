@@ -5,4 +5,5 @@
     color: navy;
     border: none;
     border-radius: 3rem;
+    z-index: 3;
 }

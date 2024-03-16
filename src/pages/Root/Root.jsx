@@ -7,7 +7,7 @@ import Cart from "../../components/Cart";
 // import styles from "./Root.module.css";
 
 export default function Root({cart}) {
-
+  console.log("root rendered")
 
 
  return (

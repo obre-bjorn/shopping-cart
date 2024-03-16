@@ -34,7 +34,7 @@ const Cart = ({cart}) => {
 }
 
 Cart.propTypes = {
-    cart: PropTypes.object,
+    cart: PropTypes.array,
 }
 
 export default Cart;
