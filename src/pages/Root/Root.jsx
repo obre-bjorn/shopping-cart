@@ -1,14 +1,14 @@
-// import React from 'react'
-// import { Link } from 'react-router-dom'
-import { useState } from "react";
-
-
+// import { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
+import PropTypes from "prop-types"
+
 import Cart from "../../components/Cart";
 
-import styles from "./Root.module.css";
+// import styles from "./Root.module.css";
 
 export default function Root({cart}) {
+
+
 
  return (
     <>
@@ -23,4 +23,8 @@ export default function Root({cart}) {
         </main>
     </>
   )
+}
+
+Root.propTypes ={
+  cart: PropTypes.array,
 }
