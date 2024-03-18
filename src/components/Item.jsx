@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 import Button from './Button';
 import styles from "./Item.module.css"
@@ -7,7 +8,10 @@ import styles from "./Item.module.css"
 
     const Item = ({item,handleAddCart}) => {
 
-    const {id,name,price,image,description,category} = item
+
+    const [quantity,setQuantity] = useState(1)
+
+    const {id,title,price,image,description,category} = item
         
     function handleClick(e){
         console.log('clicked')
@@ -26,14 +30,14 @@ import styles from "./Item.module.css"
                 <div className={styles.right}>
                     <div className={styles['product-info']}> {/* Use brackets for dynamic class name */}
                         <div className={styles['product-name']}> {/* Use brackets for dynamic class name */}
-                            <h1>{name}</h1>
+                            <h1>{title}</h1>
                         </div>
                         <div className={styles.details}> 
-                            <h3>Winter Collection</h3>
-                            <h2>{category}</h2>
+                            {/* <h2>{category}</h2> */}
                             <h4><span className="fa fa-dollar"></span>Ksh.{price}</h4>
                         </div>
-                        <Button label="Add to Cart" handleClick={handleClick}/>
+                        <input type="number"  value={quantity} onChange={(e)=> setQuantity(e.target.value)}/>
+                        <Button label="Add to Cart" handleClick={handleClick} />
                     </div>
                 </div>
                 

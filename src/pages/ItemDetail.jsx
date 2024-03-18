@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-const ItemDetail = () => {
+const ItemDetail = ({setCart}) => {
     
     const { itemid } = useParams();
 
@@ -45,7 +45,7 @@ const ItemDetail = () => {
         <div>
             {loading && <h1>Loading</h1>}
             {error && <h1> Item not available</h1>}
-            {item && <h1>Item{item.title}</h1>}
+            {item && <h1>{item.title}</h1>}
             
         </div>
     );

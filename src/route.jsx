@@ -4,6 +4,7 @@ import { useState,} from "react";
 import Root from "./pages/Root/Root";
 import Homepage from "./pages/Homepage/Homepage";
 import Shop from "./pages/Shop/Shop";
+import ItemsView from "./pages/ItemView/ItemsView";
 import ItemDetail from './pages/ItemDetail'
 
 export default function Router() {
@@ -24,11 +25,20 @@ export default function Router() {
                     path:'shop',
                     element:<Shop  setCart={setCart}/>,
                     children:[
+                        {
+                            index: true,
+                            element: <ItemsView />
+                        }
+                        ,
+                        {   
+                            path: ':category',
+                            element: <ItemsView />
+                        }
                     ]
                 },
                 {
                     path:'shop/item/:itemid',
-                    element: <ItemDetail />,
+                    element: <ItemDetail setCart={setCart}/>,
                 }
                 
             ]

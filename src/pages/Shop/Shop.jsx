@@ -7,44 +7,36 @@ import { Outlet } from "react-router-dom";
 
 const Shop = ( {setCart}) => {
 
-    // const [items, setItems] = useState (null)
-    // const [loading, setLoading] = useState([true])
-
-    // useEffect(()=>{
-       
-    //         const fetchData = async () =>{
-
-    //             const data  = await ( (await fetch('https://fakestoreapi.com/products/')).json()) 
-
-    //             console.log(data)
-    //             setItems(data)
-    //             setLoading(false)
-    //         } 
-            
-    //         fetchData()
-
-    //     return ()=> {
-    //         console.log('It has been removed')
-    //     }
-    // },[])
-
-    // console.log("Shop rendered")
     const [items, setItems] = useState (null)
+    const [categories, setCategories] = useState(null)
     const [loading, setLoading] = useState([true])
 
     useEffect(()=>{
        
             const fetchData = async () =>{
 
-                const data  = await ( (await fetch('https://fakestoreapi.com/products/')).json()) 
+                try {
+                    const [ itemsData,categoryData] = await Promise.all([
+                        fetch('https://fakestoreapi.com/products/').then(res => res.json()),
+                        fetch('https://fakestoreapi.com/products/categories').then(res => res.json())
+                    ])
 
-                console.log(data)
-
-                if(items == null){
+                    setItems(itemsData)
+                    setCategories(categoryData)
+                    // console.log('Category ', categoryData)
                     
-                    setItems(data)
-                    setLoading(false)
+                } 
+                catch (error) {
+
+                    console.log(error)
+                    
                 }
+                finally{
+
+                    setLoading(false)
+            
+                }
+                
             } 
             
             fetchData()
@@ -52,7 +44,7 @@ const Shop = ( {setCart}) => {
         return ()=> {
             console.log('It has been removed')
         }
-    },[items])
+    },[])
 
     console.log("Shop rendered")
 
@@ -74,9 +66,8 @@ const Shop = ( {setCart}) => {
 
             <div className={styles.container}>
 
-                {loading && <h1>Loading items...</h1>}
-                {items && items.map(item => <Item key={item.id} item={item}  handleAddCart= {handleAddCart}  />)}
                 
+                <Outlet/>
             </div>
 
         </div>
