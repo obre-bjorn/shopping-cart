@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react";
 import PropTypes from 'prop-types'
 
-import Item from "../../components/Item";
 import styles from './Shop.module.css'
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
-const Shop = ( {setCart}) => {
+const Shop = ( ) => {
 
-    const [items, setItems] = useState (null)
+    
     const [categories, setCategories] = useState(null)
     const [loading, setLoading] = useState([true])
 
@@ -16,12 +15,9 @@ const Shop = ( {setCart}) => {
             const fetchData = async () =>{
 
                 try {
-                    const [ itemsData,categoryData] = await Promise.all([
-                        fetch('https://fakestoreapi.com/products/').then(res => res.json()),
-                        fetch('https://fakestoreapi.com/products/categories').then(res => res.json())
-                    ])
+                    const categoryData = await fetch('https://fakestoreapi.com/products/categories').then(res => res.json())
+                    
 
-                    setItems(itemsData)
                     setCategories(categoryData)
                     // console.log('Category ', categoryData)
                     
@@ -46,18 +42,9 @@ const Shop = ( {setCart}) => {
         }
     },[])
 
-    console.log("Shop rendered")
+    
 
-      function handleAddCart(id){
-
-        items.forEach(item => {
-            if(item.id === id){
-            
-                setCart( prev => [...prev,item])
-            }
-        })
-
-     }
+     
      
     return (
         <div>
@@ -65,9 +52,18 @@ const Shop = ( {setCart}) => {
             <h1>Available Items</h1>
 
             <div className={styles.container}>
+            {loading && <h1>Loading categories...</h1>}
+            {categories && categories.map((category,index)=> {
 
+                return(
+                    <Link to={`${category}`} key = {index}> 
+                        <h1 > {category} </h1>
+                    </Link>
+                    )
+                })
+            }
                 
-                <Outlet/>
+            <Outlet/>
             </div>
 
         </div>

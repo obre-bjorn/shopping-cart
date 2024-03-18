@@ -1,21 +1,89 @@
 
 import PropTypes from 'prop-types';
 import { useEffect,useState } from 'react';
-
-import itemViewStyles from './ItemView.module.css'
 import { useParams } from 'react-router-dom';
 
+import itemViewStyles from './ItemView.module.css'
+import Item from "../../components/Item";
 
 
-const ItemsView = () => {
+
+
+const ItemsView = ({setCart}) => {
     const {category} = useParams()
+    const [items,setItems] = useState(null);
+    const[isError,setError] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
+
+    
+
+    useEffect (()=>{
+        setIsLoading(true)
+        setItems(null)
+
+        const fetchData = async () =>{
+            try {
+
+                let url = 'https://fakestoreapi.com/products'
+
+                if(category){
+                    url = url + `/category/${category}`
+                }
+                
+                const response = await fetch(url)
+
+                const data =  await response.json()
+                
+                setItems(data)
+
+            } catch (error) {
+
+                console.log('Error ', error)
+                setError(true)
+
+            }finally{
+
+                setIsLoading(false)
+
+            }
+
+    }
+    fetchData()
+
+    },[category])
 
 
-    console.log(category)
+     function handleAddCart(id){
+
+        items.forEach(item => {
+            if(item.id === id){
+            
+                setCart( prev => [...prev,item])
+            }
+        })
+
+     }
+
+     console.log('Is loading: ', isLoading)
+     console.log('Error: ', isError)
 
     return (
         <section className={itemViewStyles.container}>
-            <h1>Items to be Displayed</h1>
+            {isLoading && <h1>Loading items...</h1>}
+            {isError && <h1>Something went Wrong</h1>}
+            {!isError && items && (
+            items.length > 0 ? (
+                items.map(item => (
+                    <Item
+                        key={item.id}
+                        item={item}
+                        handleAddCart={handleAddCart}
+                    />
+                ))
+            ) : (
+                <h1>Items not found</h1>
+            )
+        )}
         </section>
     );
 };
