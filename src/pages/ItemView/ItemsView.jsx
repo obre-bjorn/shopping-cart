@@ -71,9 +71,11 @@ const ItemsView = ({cart, setCart}) => {
                 if (itemExistsInCart){  
                     setCart(cart.map(cartItem=> {
                         if(cartItem.id == id){
+                            const newQuantity = cartItem.quantity += inputQuantity
                             return {
                                 ...cartItem,
-                                quantity: cartItem.quantity += inputQuantity
+                                quantity: newQuantity,
+                                cost: newQuantity * item.price,
                             }
                         }
                         return cartItem
@@ -84,7 +86,8 @@ const ItemsView = ({cart, setCart}) => {
                     const selectedItem = {
                         id: item.id,
                         title: item.title,
-                        quantity: inputQuantity
+                        quantity: inputQuantity,
+                        cost: inputQuantity * item.price
                     }
                     setCart( prev => [...prev,selectedItem])
                     
