@@ -27,18 +27,18 @@ export default function Router() {
                     children:[
                         {
                             index: true,
-                            element: <ItemsView setCart = {setCart}/>
+                            element: <ItemsView cart={cart} setCart = {setCart}/>
                         }
                         ,
                         {   
                             path: ':category',
-                            element: <ItemsView setCart = {setCart}/>
+                            element: <ItemsView cart={cart} setCart = {setCart}/>
                         }
                     ]
                 },
                 {
                     path:'shop/item/:itemid',
-                    element: <ItemDetail setCart={setCart}/>,
+                    element: <ItemDetail cart={cart} setCart={setCart}/>,
                 }
                 
             ]

@@ -9,7 +9,7 @@ import Item from "../../components/Item";
 
 
 
-const ItemsView = ({setCart}) => {
+const ItemsView = ({cart, setCart}) => {
     const {category} = useParams()
     const [items,setItems] = useState(null);
     const[isError,setError] = useState(false);
@@ -55,17 +55,47 @@ const ItemsView = ({setCart}) => {
 
      function handleAddCart(id){
 
+
+        let inputQuantity = parseInt(document.querySelector(`#item${id}`).value)
+
+        // console.log('Input Quantity ',inputQuantity)
+        // console.log('Cart ',cart)
+
         items.forEach(item => {
             if(item.id === id){
-            
-                setCart( prev => [...prev,item])
+               
+                const itemExistsInCart = cart.find(cartItem => cartItem.id == id) !== undefined
+                console.log('Item exists ', itemExistsInCart)
+                
+
+                if (itemExistsInCart){  
+                    setCart(cart.map(cartItem=> {
+                        if(cartItem.id == id){
+                            return {
+                                ...cartItem,
+                                quantity: cartItem.quantity += inputQuantity
+                            }
+                        }
+                        return cartItem
+                    }))
+                    
+                }else{
+                    console.log('Cart ', cart)
+                    const selectedItem = {
+                        id: item.id,
+                        title: item.title,
+                        quantity: inputQuantity
+                    }
+                    setCart( prev => [...prev,selectedItem])
+                    
+                }
+
             }
         })
 
      }
 
-     console.log('Is loading: ', isLoading)
-     console.log('Error: ', isError)
+     
 
     return (
         <section className={itemViewStyles.container}>

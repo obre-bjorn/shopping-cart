@@ -22,7 +22,7 @@ import styles from "./Item.module.css"
   
     return (
         <div className={styles.card}> 
-            <Link to={`item/${id}`}>
+            <Link to={`/shop/item/${id}`}>
                 <div className={styles.left}>
                     <img src={image} alt="shoe"/>
                 </div>
@@ -36,7 +36,7 @@ import styles from "./Item.module.css"
                             {/* <h2>{category}</h2> */}
                             <h4><span className="fa fa-dollar"></span>Ksh.{price}</h4>
                         </div>
-                        <input type="number"  value={quantity} onChange={(e)=> setQuantity(e.target.value)}/>
+                        <input id={`item${id}`} type="number"  value={quantity} onChange={(e)=> setQuantity(e.target.value)}/>
                         <Button label="Add to Cart" handleClick={handleClick} />
                     </div>
                 </div>
