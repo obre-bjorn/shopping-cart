@@ -1,3 +1,19 @@
 .cart-detail {
     color: black;
 }
+h4{
+    color: black;
+}
+.cart{
+    position: fixed;
+    width: 100%;
+    max-width: 800px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    top: 0;
+    right: 0;
+    z-index: 9999;
+    background-color:white;
+    color: black;
+}

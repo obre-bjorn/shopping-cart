@@ -17,6 +17,7 @@ import styles from "./Item.module.css"
         console.log('clicked')
             e.stopPropagation()
             handleAddCart(id)
+            setQuantity(1)
         }
 
   
@@ -36,7 +37,7 @@ import styles from "./Item.module.css"
                             {/* <h2>{category}</h2> */}
                             <h4><span className="fa fa-dollar"></span>Ksh.{price}</h4>
                         </div>
-                        <input id={`item${id}`} type="number"  value={quantity} onChange={(e)=> setQuantity(e.target.value)}/>
+                        <input id={`item${id}`} type="number"  value={quantity} onChange={(e)=> setQuantity(e.target.value)} min="1"/>
                         <Button label="Add to Cart" handleClick={handleClick} />
                     </div>
                 </div>
