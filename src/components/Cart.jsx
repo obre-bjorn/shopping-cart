@@ -1,6 +1,7 @@
 
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 
 import cartStyles from './Cart.module.css'
@@ -20,26 +21,37 @@ const Cart = ({cart}) => {
 
             <h3 className={cartStyles['cart-detail']} onClick={() => setShowCart(!showCart)}> Cart({totalcartItems})</h3>
 
-            {showCart && <div className={cartStyles.cart}>
+            {showCart && 
+            <div className={cartStyles.cart}>
                 <Button label="X" handleClick={() => setShowCart(false)}/>
 
-                    {cart.length < 1 && <h1>No Items Available</h1>}
-                {
-                    cart.map(cartItem => <h4 className={cartStyles['cart-detail']} key={cartItem.id}>{cartItem.title} : {cartItem.quantity} : Total Cost: {cartItem.cost} </h4>)
+                    <>
+                    {cart.length < 1 ?  
+                        <h1>No Items Available</h1>:
+                        
+                        
+                        cart.map(cartItem => <h4 className={cartStyles['cart-detail']} key={cartItem.id}>{cartItem.title} : {cartItem.quantity} : Total Cost: {cartItem.cost} </h4>)
+                        }
+                        </>
                 
-                }
+                
 
-                <h3 className={cartStyles['cart-detail']}>TOTAL COSTS: {cart.reduce((total,item) =>{
-                                    return total + item.cost
-                                },0)}
-                </h3>
+                    <h3 className={cartStyles['cart-detail']}>TOTAL COSTS: {cart.reduce((total,item) =>{
+                                        return total + item.cost
+                                    },0)}
+                    </h3>
                 
+              <Link to='/checkout'>
+                <button>Proceed To Checkout</button>
+              </Link>
+
             </div>
+                
             }
 
         </>
     
-    );
+    )
 }
 
 Cart.propTypes = {

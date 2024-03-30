@@ -6,6 +6,7 @@ import Homepage from "./pages/Homepage/Homepage";
 import Shop from "./pages/Shop/Shop";
 import ItemsView from "./pages/ItemView/ItemsView";
 import ItemDetail from './pages/ItemDetail'
+import Checkout from "./pages/Checkout";
 
 export default function Router() {
 
@@ -39,6 +40,10 @@ export default function Router() {
                 {
                     path:'shop/item/:itemid',
                     element: <ItemDetail cart={cart} setCart={setCart}/>,
+                },
+                {
+                    path: '/checkout',
+                    element: <Checkout cart={cart} setCart={setCart}/>
                 }
                 
             ]
