@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import checkoutStyles from './Checkout.module.css'
 
 
-const Checkout = ({cart}) => {
+const Checkout = ({amount}) => {
+
+
     return (
         <div>
             <h1>Checkout Page</h1>
-            {cart.map(item => <h1 key={item.id}>{item.title}</h1>)}
 
             <button>Make Payment</button>
         </div>
@@ -16,8 +17,7 @@ const Checkout = ({cart}) => {
 
 
 Checkout.propTypes = {
-    cart: PropTypes.array,
-    setCart:  PropTypes.func
+   amount: PropTypes.number
 };
 
 

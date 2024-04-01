@@ -4,7 +4,7 @@ import PropTypes from "prop-types"
 
 import Cart from "../../components/Cart";
 
-// import styles from "./Root.module.css";
+import styles from "./Root.module.css";
 
 export default function Root({cart, setCart}) {
   console.log("root rendered")
@@ -12,10 +12,15 @@ export default function Root({cart, setCart}) {
 
  return (
     <>
-        <nav>
-            <Link to='/'>Home</Link>
-            <Link to='/shop'>Shop</Link>
-            <Cart cart={cart} setCart={setCart}/>
+        <nav className={styles.navbar}>
+              
+              <div className={styles.navLinks}>
+                <Link to='/'><h4>Home</h4></Link>
+                <Link to='/shop'><h4>Shop</h4></Link>
+              </div>
+
+              <Cart cart={cart} setCart={setCart}/>
+            
         </nav>
 
         <main >

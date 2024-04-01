@@ -48,7 +48,7 @@ const Cart = ({cart,setCart}) => {
 
     return (
         <>
-
+            
             <h3 className={cartStyles['cart-detail']} onClick={() => setShowCart(!showCart)}> Cart({totalcartItems})</h3>
 
             {showCart && 

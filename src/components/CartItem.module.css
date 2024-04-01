@@ -1,0 +1,25 @@
+.itemContainer{
+    display: flex;
+    align-items: center;
+    height: 15rem;
+    gap: 2rem;
+    border-bottom: 2px solid red;
+    padding: 1rem .5rem ;
+    justify-content: space-between;
+}
+.button{
+    width: 2rem;
+    font-size: 2rem;
+}
+.title{
+    width: 40%;
+    height: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 18px;
+}
+.quantity{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
