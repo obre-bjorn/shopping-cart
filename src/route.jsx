@@ -5,8 +5,8 @@ import Root from "./pages/Root/Root";
 import Homepage from "./pages/Homepage/Homepage";
 import Shop from "./pages/Shop/Shop";
 import ItemsView from "./pages/ItemView/ItemsView";
-import ItemDetail from './pages/ItemDetail'
-import Checkout from "./pages/Checkout";
+import ItemDetail from './pages/ItemDetail/ItemDetail'
+import Checkout from "./pages/Checkout/Checkout";
 
 export default function Router() {
 
@@ -16,7 +16,7 @@ export default function Router() {
     const router = createBrowserRouter([
         {
             path:"/",
-            element:<Root cart={cart}/>,
+            element:<Root cart={cart} setCart={setCart}/>,
             children: [
                 {
                     path: '/',

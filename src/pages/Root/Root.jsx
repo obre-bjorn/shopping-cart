@@ -6,7 +6,7 @@ import Cart from "../../components/Cart";
 
 // import styles from "./Root.module.css";
 
-export default function Root({cart}) {
+export default function Root({cart, setCart}) {
   console.log("root rendered")
 
 
@@ -15,7 +15,7 @@ export default function Root({cart}) {
         <nav>
             <Link to='/'>Home</Link>
             <Link to='/shop'>Shop</Link>
-            <Cart cart={cart} />
+            <Cart cart={cart} setCart={setCart}/>
         </nav>
 
         <main >
@@ -27,4 +27,5 @@ export default function Root({cart}) {
 
 Root.propTypes ={
   cart: PropTypes.array,
+  setCart: PropTypes.func,
 }
