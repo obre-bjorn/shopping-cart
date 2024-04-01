@@ -82,7 +82,7 @@ const ItemsView = ({cart, setCart}) => {
                     }))
                     
                 }else{
-                    console.log('Cart ', cart)
+                    
                     const selectedItem = {
                         id: item.id,
                         title: item.title,
@@ -97,9 +97,7 @@ const ItemsView = ({cart, setCart}) => {
             }
         })
 
-     }
-
-     
+     }     
 
     return (
         <section className={itemViewStyles.container}>
@@ -124,7 +122,8 @@ const ItemsView = ({cart, setCart}) => {
 
 
 ItemsView.propTypes = {
-    
+    cart: PropTypes.array,
+    setCart: PropTypes.func,
 };
 
 

@@ -11,7 +11,7 @@ import styles from "./Item.module.css"
 
     const [quantity,setQuantity] = useState(1)
 
-    const {id,title,price,image,description,category} = item
+    const {id,title,price,image} = item
         
     function handleClick(e){
         console.log('clicked')
@@ -48,7 +48,7 @@ import styles from "./Item.module.css"
 
 Item.propTypes = {
     item: PropTypes.object,
-
+    handleAddCart: PropTypes.func
 }
 
 export default Item;
