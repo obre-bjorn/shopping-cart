@@ -86,6 +86,7 @@ const ItemsView = ({cart, setCart}) => {
                     const selectedItem = {
                         id: item.id,
                         title: item.title,
+                        price: item.price,
                         quantity: inputQuantity,
                         cost: inputQuantity * item.price
                     }

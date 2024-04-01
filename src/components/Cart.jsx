@@ -20,7 +20,7 @@ const Cart = ({cart,setCart}) => {
         
         const newCart = cart.map(item => {
             if (item.id == id){
-                return {...item, quantity: item.quantity+=1}
+                return {...item, quantity: item.quantity+=1,cost: item.quantity * item.price}
             }
             return item
         })
@@ -37,6 +37,7 @@ const Cart = ({cart,setCart}) => {
 
         if(itemQuantity !== 0){
             newCart[itemIndex].quantity = itemQuantity
+            newCart[itemIndex].cost = itemQuantity * newCart[itemIndex].price
             setCart(newCart)
         }else{
             newCart.splice(itemIndex,1)
@@ -72,9 +73,6 @@ const Cart = ({cart,setCart}) => {
                         </Link>
                     </>
                         }
-                
-                
-
 
             </div>
                 
