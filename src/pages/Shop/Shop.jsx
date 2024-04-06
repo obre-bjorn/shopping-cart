@@ -49,7 +49,7 @@ const Shop = ( ) => {
     return (
         <div>
             
-            <h1>Available Items</h1>
+            {/* <h1>Available Items</h1> */}
 
             <div className={styles.container}>
             {loading && <h1>Loading categories...</h1>}

@@ -8,10 +8,14 @@ import ItemsView from "./pages/ItemView/ItemsView";
 import ItemDetail from './pages/ItemDetail/ItemDetail'
 import Checkout from "./pages/Checkout/Checkout";
 
+
 export default function Router() {
 
     const [cart, setCart] = useState([])
-      
+
+    const amount = cart.reduce((sum,item) => (sum + item.cost),0)
+    
+    
 
     const router = createBrowserRouter([
         {
@@ -43,7 +47,7 @@ export default function Router() {
                 },
                 {
                     path: '/checkout',
-                    element: <Checkout cart={cart} setCart={setCart}/>
+                    element: <Checkout cart={cart} setCart={setCart} amount={amount}/>
                 }
                 
             ]

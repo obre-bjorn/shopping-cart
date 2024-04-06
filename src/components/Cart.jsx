@@ -13,6 +13,9 @@ import CartItem from './CartItem';
 const Cart = ({cart,setCart}) => {
 
     const [showCart, setShowCart] = useState(false)
+    const totalCost = cart.reduce((total,item) =>{
+                            return total + item.cost
+                    },0)
     
     let totalcartItems = cart.length 
 
@@ -63,14 +66,16 @@ const Cart = ({cart,setCart}) => {
                         
                         {cart.map(cartItem => <CartItem key={cartItem.id} item={cartItem} deductItem={()=> {handleDeductItemQuantity(cartItem.id)}} addItem={()=> {handleAddItemQuantity(cartItem.id)}}/>)}
                         
-                        <h3 className={cartStyles['cart-detail']}>TOTAL COSTS: {cart.reduce((total,item) =>{
-                                            return total + item.cost
-                                        },0)}
-                        </h3>
-                    
-                        <Link to='/checkout'>
-                            <button>Proceed To Checkout</button>
+                        <div className={cartStyles['cart-footer']}>
+
+                            <h3 className={cartStyles['cart-detail']}>TOTAL COSTS:{totalCost}</h3>
+                        
+                         <Link to='/checkout'>
+                            <button className={cartStyles.pay}>
+                               Proceed To Checkout
+                            </button>
                         </Link>
+                        </div>
                     </>
                         }
 

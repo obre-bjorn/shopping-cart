@@ -23,8 +23,8 @@ export default function Root({cart, setCart}) {
             
         </nav>
 
-        <main >
-          <Outlet />
+        <main className={styles['main-wrapper']}>
+            <Outlet />
         </main>
     </>
   )

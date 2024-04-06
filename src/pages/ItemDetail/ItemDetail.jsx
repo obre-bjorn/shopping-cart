@@ -2,13 +2,17 @@ import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-const ItemDetail = ({setCart}) => {
+import ItemDetailStyles from './ItemDetail.module.css'
+import Button from '../../components/Button';
+
+const ItemDetail = ({cart,setCart}) => {
     
     const { itemid } = useParams();
 
     const[item,setItem] = useState(null);
     const [loading,setLoading] = useState(true)
     const [error,setError] = useState(false)
+    const [quantityInput, setQuantityInput] = useState(1)
     
     useEffect(()=>{
          const fetchData = async () =>{
@@ -40,13 +44,64 @@ const ItemDetail = ({setCart}) => {
 
     },[itemid])
 
+    function handleQuantityChange(e){
+        setQuantityInput(e.target.value)
+    }
+
+    function handleAddToCart(item){
+
+       const quantity = parseInt(quantityInput)
+        const itemExists = cart.some(cartItem =>  cartItem.id == item.id)
+
+       if (itemExists){  
+                    setCart(cart.map(cartItem=> {
+                        if(cartItem.id == item.id){
+                            const newQuantity = cartItem.quantity += quantity
+                            return {
+                                ...cartItem,
+                                quantity: newQuantity,
+                                cost: newQuantity * item.price,
+                            }
+                        }
+                        return cartItem
+                    }))
+                    
+                }else{
+                    
+                    const selectedItem = {
+                        id: item.id,
+                        title: item.title,
+                        price: item.price,
+                        quantity: quantity,
+                        cost: quantity * item.price
+                    }
+                    setCart( prev => [...prev,selectedItem])
+                    
+                }
+
+    }
 
     return (
-        <div>
-            {loading && <h1>Loading</h1>}
-            {error && <h1> Item not available</h1>}
-            {item && <h1>{item.title}</h1>}
-            
+        <div className={ItemDetailStyles.container}>
+        <div className={ItemDetailStyles.wrapper}>
+
+            {loading && <h1>Loading...</h1>}
+            {!loading && error && <h1>Item not available</h1>}
+            {!loading && !error && item && (
+                <>
+                    <div className={ItemDetailStyles['item-image']}>
+                        <img src={item.image} alt={item.title} />
+                    </div>
+                    <div className={ItemDetailStyles['item-details']}>
+                        <h1 className="item-title">{item.title}</h1>
+                        <div className="item-price">${item.price}</div>
+                        <div className={ItemDetailStyles['item-desc']}>{item.description}</div>
+                        <input className={ItemDetailStyles.quantity} type="number" name="" id="" value={quantityInput} onChange={handleQuantityChange} min={1}/>
+                        <Button label="Add to Cart" handleClick={()=> {handleAddToCart(item)}}/>
+                    </div>
+                </>
+            )}
+        </div>
         </div>
     );
 };
